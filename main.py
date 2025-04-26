@@ -43,7 +43,7 @@ st.sidebar.header("Filters")
 date_range = st.sidebar.date_input("Select Date Range", [df['order_date'].min(), df['order_date'].max()])
 products = st.sidebar.multiselect("Select Products", options=df['Item Description'].unique())
 states = st.sidebar.multiselect("Select States", options=df['Ship To State'].unique())
-fulfillment = st.sidebar.multiselect("Fulfillment Channel", options=df['Fulfillment Channel'].unique())
+
 
 filtered_df = df.copy()
 if date_range:
@@ -52,8 +52,7 @@ if products:
     filtered_df = filtered_df[filtered_df['Item Description'].isin(products)]
 if states:
     filtered_df = filtered_df[filtered_df['Ship To State'].isin(states)]
-if fulfillment:
-    filtered_df = filtered_df[filtered_df['Fulfillment Channel'].isin(fulfillment)]
+
 
 # Overview Tab
 st.title("📊 Sales Insights Dashboard")
